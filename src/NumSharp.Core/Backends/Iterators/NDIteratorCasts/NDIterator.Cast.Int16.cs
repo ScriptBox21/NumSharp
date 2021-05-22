@@ -75,7 +75,7 @@ namespace NumSharp
                     case IteratorType.Tensor:
                         {
                             var hasNext = new Reference<bool>(true);
-                            var iterator = new NDCoordinatesIncrementor(ref shape, _ => hasNext.Value = false);
+                            var iterator = new ValueCoordinatesIncrementor(ref shape, delegate(ref ValueCoordinatesIncrementor _) { hasNext.Value = false; });
                             Func<int[], int> getOffset = shape.GetOffset;
                             var index = iterator.Index;
 
@@ -127,7 +127,7 @@ namespace NumSharp
 
                     case IteratorType.Matrix:
                     case IteratorType.Tensor:
-                        var iterator = new NDOffsetIncrementor(Shape); //we do not copy the dimensions because there is not risk for the iterator's shape to change.
+                        var iterator = new ValueOffsetIncrementor(Shape); //we do not copy the dimensions because there is not risk for the iterator's shape to change.
                         MoveNext = () => convert(*((Int16*)localBlock.Address + iterator.Next()));
                         MoveNextReference = () => throw new NotSupportedException("Unable to return references during iteration when casting is involved.");
                         Reset = () => iterator.Reset();
@@ -195,7 +195,7 @@ namespace NumSharp
                     case IteratorType.Matrix:
                     case IteratorType.Tensor:
                         {
-                            var iterator = new NDCoordinatesIncrementor(ref shape, incr => incr.Reset());
+                            var iterator = new ValueCoordinatesIncrementor(ref shape, delegate(ref ValueCoordinatesIncrementor incr) { incr.Reset(); });
                             var index = iterator.Index;
                             Func<int[], int> getOffset = shape.GetOffset;
                             MoveNext = () =>
@@ -240,7 +240,7 @@ namespace NumSharp
                         break;
                     case IteratorType.Matrix:
                     case IteratorType.Tensor:
-                        var iterator = new NDOffsetIncrementorAutoresetting(Shape); //we do not copy the dimensions because there is not risk for the iterator's shape to change.
+                        var iterator = new ValueOffsetIncrementorAutoresetting(Shape); //we do not copy the dimensions because there is not risk for the iterator's shape to change.
                         MoveNext = () => convert(*((Int16*)localBlock.Address + iterator.Next()));
                         MoveNextReference = () => throw new NotSupportedException("Unable to return references during iteration when casting is involved.");
                         HasNext = () => true;

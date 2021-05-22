@@ -97,6 +97,7 @@ namespace NumSharp.Backends
         /// <summary>
         ///     The shape representing the data in this storage.
         /// </summary>
+        /// <remarks>It is dangerous to set Shape by reference. use Reshape(Shape) instead.</remarks>
         public ref Shape ShapeReference => ref _shape;
 
         /// <summary>
@@ -1363,12 +1364,11 @@ namespace NumSharp.Backends
             }
             else
             {
-                var incr = new NDCoordinatesIncrementor(Shape.dimensions);
+                var incr = new ValueCoordinatesIncrementor(Shape.dimensions);
                 int[] current = incr.Index;
-                Func<int[], int> getOffset = Shape.GetOffset;
                 int i = 0;
-
-                do ret[i++] = src[getOffset(current)];
+                ref Shape shape = ref ShapeReference;
+                do ret[i++] = src[shape.GetOffset(current)];
                 while (incr.Next() != null);
             }
 

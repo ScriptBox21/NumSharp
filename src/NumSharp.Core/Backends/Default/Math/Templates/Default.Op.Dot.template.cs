@@ -49,11 +49,11 @@ namespace NumSharp.Backends
 	                    case NPTypeCode.Boolean:
 	                    {
 		                    var ret_address = (bool*)ret.Address;
-                            var incr = new NDCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
+                            var incr = new ValueCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
                             int[] current = incr.Index;
                             do
                             {
-                                *(ret_address + retShape.GetOffset(current)) = Converts.ToBoolean((*(lhs_address + BroadcastedLeftShape.GetOffset(current)) != 0 ? 1 : 0) %(op) (*(rhs_address + BroadcastedRightShape.GetOffset(current)) ? 1 : 0));
+                                ret_address[retShape.GetOffset(current)] = Converts.ToBoolean((lhs_address[BroadcastedLeftShape.GetOffset(current)] != 0 ? 1 : 0) %(op) (rhs_address[BroadcastedRightShape.GetOffset(current)] ? 1 : 0));
                             } while (incr.Next() != null);
 
                             return ret;
@@ -61,11 +61,11 @@ namespace NumSharp.Backends
 	                    case NPTypeCode.Byte:
 	                    {
 		                    var ret_address = (byte*)ret.Address;
-                            var incr = new NDCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
+                            var incr = new ValueCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
                             int[] current = incr.Index;
                             do
                             {
-                                *(ret_address + retShape.GetOffset(current)) = Converts.ToByte(((__2__)*(lhs_address + BroadcastedLeftShape.GetOffset(current))) %(op) (*(rhs_address + BroadcastedRightShape.GetOffset(current)) ? (__2__) 1 : (__2__) 0));
+                                ret_address[retShape.GetOffset(current)] = Converts.ToByte(((__2__)lhs_address[BroadcastedLeftShape.GetOffset(current)]) %(op) (rhs_address[BroadcastedRightShape.GetOffset(current)] ? (__2__) 1 : (__2__) 0));
                             } while (incr.Next() != null);
 
                             return ret;
@@ -73,11 +73,11 @@ namespace NumSharp.Backends
 	                    case NPTypeCode.Int16:
 	                    {
 		                    var ret_address = (short*)ret.Address;
-                            var incr = new NDCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
+                            var incr = new ValueCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
                             int[] current = incr.Index;
                             do
                             {
-                                *(ret_address + retShape.GetOffset(current)) = Converts.ToInt16(((__2__)*(lhs_address + BroadcastedLeftShape.GetOffset(current))) %(op) (*(rhs_address + BroadcastedRightShape.GetOffset(current)) ? (__2__) 1 : (__2__) 0));
+                                ret_address[retShape.GetOffset(current)] = Converts.ToInt16(((__2__)lhs_address[BroadcastedLeftShape.GetOffset(current)]) %(op) (rhs_address[BroadcastedRightShape.GetOffset(current)] ? (__2__) 1 : (__2__) 0));
                             } while (incr.Next() != null);
 
                             return ret;
@@ -85,11 +85,11 @@ namespace NumSharp.Backends
 	                    case NPTypeCode.UInt16:
 	                    {
 		                    var ret_address = (ushort*)ret.Address;
-                            var incr = new NDCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
+                            var incr = new ValueCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
                             int[] current = incr.Index;
                             do
                             {
-                                *(ret_address + retShape.GetOffset(current)) = Converts.ToUInt16(((__2__)*(lhs_address + BroadcastedLeftShape.GetOffset(current))) %(op) (*(rhs_address + BroadcastedRightShape.GetOffset(current)) ? (__2__) 1 : (__2__) 0));
+                                ret_address[retShape.GetOffset(current)] = Converts.ToUInt16(((__2__)lhs_address[BroadcastedLeftShape.GetOffset(current)]) %(op) (rhs_address[BroadcastedRightShape.GetOffset(current)] ? (__2__) 1 : (__2__) 0));
                             } while (incr.Next() != null);
 
                             return ret;
@@ -97,11 +97,11 @@ namespace NumSharp.Backends
 	                    case NPTypeCode.Int32:
 	                    {
 		                    var ret_address = (int*)ret.Address;
-                            var incr = new NDCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
+                            var incr = new ValueCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
                             int[] current = incr.Index;
                             do
                             {
-                                *(ret_address + retShape.GetOffset(current)) = Converts.ToInt32(((__2__)*(lhs_address + BroadcastedLeftShape.GetOffset(current))) %(op) (*(rhs_address + BroadcastedRightShape.GetOffset(current)) ? (__2__) 1 : (__2__) 0));
+                                ret_address[retShape.GetOffset(current)] = Converts.ToInt32(((__2__)lhs_address[BroadcastedLeftShape.GetOffset(current)]) %(op) (rhs_address[BroadcastedRightShape.GetOffset(current)] ? (__2__) 1 : (__2__) 0));
                             } while (incr.Next() != null);
 
                             return ret;
@@ -109,11 +109,11 @@ namespace NumSharp.Backends
 	                    case NPTypeCode.UInt32:
 	                    {
 		                    var ret_address = (uint*)ret.Address;
-                            var incr = new NDCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
+                            var incr = new ValueCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
                             int[] current = incr.Index;
                             do
                             {
-                                *(ret_address + retShape.GetOffset(current)) = Converts.ToUInt32(((__2__)*(lhs_address + BroadcastedLeftShape.GetOffset(current))) %(op) (*(rhs_address + BroadcastedRightShape.GetOffset(current)) ? (__2__) 1 : (__2__) 0));
+                                ret_address[retShape.GetOffset(current)] = Converts.ToUInt32(((__2__)lhs_address[BroadcastedLeftShape.GetOffset(current)]) %(op) (rhs_address[BroadcastedRightShape.GetOffset(current)] ? (__2__) 1 : (__2__) 0));
                             } while (incr.Next() != null);
 
                             return ret;
@@ -121,11 +121,11 @@ namespace NumSharp.Backends
 	                    case NPTypeCode.Int64:
 	                    {
 		                    var ret_address = (long*)ret.Address;
-                            var incr = new NDCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
+                            var incr = new ValueCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
                             int[] current = incr.Index;
                             do
                             {
-                                *(ret_address + retShape.GetOffset(current)) = Converts.ToInt64(((__2__)*(lhs_address + BroadcastedLeftShape.GetOffset(current))) %(op) (*(rhs_address + BroadcastedRightShape.GetOffset(current)) ? (__2__) 1 : (__2__) 0));
+                                ret_address[retShape.GetOffset(current)] = Converts.ToInt64(((__2__)lhs_address[BroadcastedLeftShape.GetOffset(current)]) %(op) (rhs_address[BroadcastedRightShape.GetOffset(current)] ? (__2__) 1 : (__2__) 0));
                             } while (incr.Next() != null);
 
                             return ret;
@@ -133,11 +133,11 @@ namespace NumSharp.Backends
 	                    case NPTypeCode.UInt64:
 	                    {
 		                    var ret_address = (ulong*)ret.Address;
-                            var incr = new NDCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
+                            var incr = new ValueCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
                             int[] current = incr.Index;
                             do
                             {
-                                *(ret_address + retShape.GetOffset(current)) = Converts.ToUInt64(((__2__)*(lhs_address + BroadcastedLeftShape.GetOffset(current))) %(op) (*(rhs_address + BroadcastedRightShape.GetOffset(current)) ? (__2__) 1 : (__2__) 0));
+                                ret_address[retShape.GetOffset(current)] = Converts.ToUInt64(((__2__)lhs_address[BroadcastedLeftShape.GetOffset(current)]) %(op) (rhs_address[BroadcastedRightShape.GetOffset(current)] ? (__2__) 1 : (__2__) 0));
                             } while (incr.Next() != null);
 
                             return ret;
@@ -145,11 +145,11 @@ namespace NumSharp.Backends
 	                    case NPTypeCode.Char:
 	                    {
 		                    var ret_address = (char*)ret.Address;
-                            var incr = new NDCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
+                            var incr = new ValueCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
                             int[] current = incr.Index;
                             do
                             {
-                                *(ret_address + retShape.GetOffset(current)) = Converts.ToChar(((__2__)*(lhs_address + BroadcastedLeftShape.GetOffset(current))) %(op) (*(rhs_address + BroadcastedRightShape.GetOffset(current)) ? (__2__) 1 : (__2__) 0));
+                                ret_address[retShape.GetOffset(current)] = Converts.ToChar(((__2__)lhs_address[BroadcastedLeftShape.GetOffset(current)]) %(op) (rhs_address[BroadcastedRightShape.GetOffset(current)] ? (__2__) 1 : (__2__) 0));
                             } while (incr.Next() != null);
 
                             return ret;
@@ -157,11 +157,11 @@ namespace NumSharp.Backends
 	                    case NPTypeCode.Double:
 	                    {
 		                    var ret_address = (double*)ret.Address;
-                            var incr = new NDCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
+                            var incr = new ValueCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
                             int[] current = incr.Index;
                             do
                             {
-                                *(ret_address + retShape.GetOffset(current)) = Converts.ToDouble(((__2__)*(lhs_address + BroadcastedLeftShape.GetOffset(current))) %(op) (*(rhs_address + BroadcastedRightShape.GetOffset(current)) ? (__2__) 1 : (__2__) 0));
+                                ret_address[retShape.GetOffset(current)] = Converts.ToDouble(((__2__)lhs_address[BroadcastedLeftShape.GetOffset(current)]) %(op) (rhs_address[BroadcastedRightShape.GetOffset(current)] ? (__2__) 1 : (__2__) 0));
                             } while (incr.Next() != null);
 
                             return ret;
@@ -169,11 +169,11 @@ namespace NumSharp.Backends
 	                    case NPTypeCode.Single:
 	                    {
 		                    var ret_address = (float*)ret.Address;
-                            var incr = new NDCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
+                            var incr = new ValueCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
                             int[] current = incr.Index;
                             do
                             {
-                                *(ret_address + retShape.GetOffset(current)) = Converts.ToSingle(((__2__)*(lhs_address + BroadcastedLeftShape.GetOffset(current))) %(op) (*(rhs_address + BroadcastedRightShape.GetOffset(current)) ? (__2__) 1 : (__2__) 0));
+                                ret_address[retShape.GetOffset(current)] = Converts.ToSingle(((__2__)lhs_address[BroadcastedLeftShape.GetOffset(current)]) %(op) (rhs_address[BroadcastedRightShape.GetOffset(current)] ? (__2__) 1 : (__2__) 0));
                             } while (incr.Next() != null);
 
                             return ret;
@@ -181,11 +181,11 @@ namespace NumSharp.Backends
 	                    case NPTypeCode.Decimal:
 	                    {
 		                    var ret_address = (decimal*)ret.Address;
-                            var incr = new NDCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
+                            var incr = new ValueCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
                             int[] current = incr.Index;
                             do
                             {
-                                *(ret_address + retShape.GetOffset(current)) = Converts.ToDecimal(((__2__)*(lhs_address + BroadcastedLeftShape.GetOffset(current))) %(op) (*(rhs_address + BroadcastedRightShape.GetOffset(current)) ? (__2__) 1 : (__2__) 0));
+                                ret_address[retShape.GetOffset(current)] = Converts.ToDecimal(((__2__)lhs_address[BroadcastedLeftShape.GetOffset(current)]) %(op) (rhs_address[BroadcastedRightShape.GetOffset(current)] ? (__2__) 1 : (__2__) 0));
                             } while (incr.Next() != null);
 
                             return ret;
@@ -218,11 +218,11 @@ namespace NumSharp.Backends
 	                    case NPTypeCode.Boolean:
 	                    {
 		                    var ret_address = (bool*)ret.Address;
-                            var incr = new NDCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
+                            var incr = new ValueCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
                             int[] current = incr.Index;
                             do
                             {
-                                *(ret_address + retShape.GetOffset(current)) = 0 != (*(lhs_address + BroadcastedLeftShape.GetOffset(current)) #(op) (__2__) *(rhs_address + BroadcastedRightShape.GetOffset(current)));
+                                ret_address[retShape.GetOffset(current)] = 0 != (lhs_address[BroadcastedLeftShape.GetOffset(current)] #(op) (__2__) rhs_address[BroadcastedRightShape.GetOffset(current)]);
                             } while (incr.Next() != null);
 
                             return ret;
@@ -230,11 +230,11 @@ namespace NumSharp.Backends
 	                    case NPTypeCode.Byte:
 	                    {
 		                    var ret_address = (byte*)ret.Address;
-                            var incr = new NDCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
+                            var incr = new ValueCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
                             int[] current = incr.Index;
                             do
                             {
-                                *(ret_address + retShape.GetOffset(current)) = Converts.ToByte(*(lhs_address + BroadcastedLeftShape.GetOffset(current)) #(op) (__2__) *(rhs_address + BroadcastedRightShape.GetOffset(current)));
+                                ret_address[retShape.GetOffset(current)] = Converts.ToByte(lhs_address[BroadcastedLeftShape.GetOffset(current)] #(op) (__2__) rhs_address[BroadcastedRightShape.GetOffset(current)]);
                             } while (incr.Next() != null);
 
                             return ret;
@@ -242,11 +242,11 @@ namespace NumSharp.Backends
 	                    case NPTypeCode.Int16:
 	                    {
 		                    var ret_address = (short*)ret.Address;
-                            var incr = new NDCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
+                            var incr = new ValueCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
                             int[] current = incr.Index;
                             do
                             {
-                                *(ret_address + retShape.GetOffset(current)) = Converts.ToInt16(*(lhs_address + BroadcastedLeftShape.GetOffset(current)) #(op) (__2__) *(rhs_address + BroadcastedRightShape.GetOffset(current)));
+                                ret_address[retShape.GetOffset(current)] = Converts.ToInt16(lhs_address[BroadcastedLeftShape.GetOffset(current)] #(op) (__2__) rhs_address[BroadcastedRightShape.GetOffset(current)]);
                             } while (incr.Next() != null);
 
                             return ret;
@@ -254,11 +254,11 @@ namespace NumSharp.Backends
 	                    case NPTypeCode.UInt16:
 	                    {
 		                    var ret_address = (ushort*)ret.Address;
-                            var incr = new NDCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
+                            var incr = new ValueCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
                             int[] current = incr.Index;
                             do
                             {
-                                *(ret_address + retShape.GetOffset(current)) = Converts.ToUInt16(*(lhs_address + BroadcastedLeftShape.GetOffset(current)) #(op) (__2__) *(rhs_address + BroadcastedRightShape.GetOffset(current)));
+                                ret_address[retShape.GetOffset(current)] = Converts.ToUInt16(lhs_address[BroadcastedLeftShape.GetOffset(current)] #(op) (__2__) rhs_address[BroadcastedRightShape.GetOffset(current)]);
                             } while (incr.Next() != null);
 
                             return ret;
@@ -266,11 +266,11 @@ namespace NumSharp.Backends
 	                    case NPTypeCode.Int32:
 	                    {
 		                    var ret_address = (int*)ret.Address;
-                            var incr = new NDCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
+                            var incr = new ValueCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
                             int[] current = incr.Index;
                             do
                             {
-                                *(ret_address + retShape.GetOffset(current)) = Converts.ToInt32(*(lhs_address + BroadcastedLeftShape.GetOffset(current)) #(op) (__2__) *(rhs_address + BroadcastedRightShape.GetOffset(current)));
+                                ret_address[retShape.GetOffset(current)] = Converts.ToInt32(lhs_address[BroadcastedLeftShape.GetOffset(current)] #(op) (__2__) rhs_address[BroadcastedRightShape.GetOffset(current)]);
                             } while (incr.Next() != null);
 
                             return ret;
@@ -278,11 +278,11 @@ namespace NumSharp.Backends
 	                    case NPTypeCode.UInt32:
 	                    {
 		                    var ret_address = (uint*)ret.Address;
-                            var incr = new NDCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
+                            var incr = new ValueCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
                             int[] current = incr.Index;
                             do
                             {
-                                *(ret_address + retShape.GetOffset(current)) = Converts.ToUInt32(*(lhs_address + BroadcastedLeftShape.GetOffset(current)) #(op) (__2__) *(rhs_address + BroadcastedRightShape.GetOffset(current)));
+                                ret_address[retShape.GetOffset(current)] = Converts.ToUInt32(lhs_address[BroadcastedLeftShape.GetOffset(current)] #(op) (__2__) rhs_address[BroadcastedRightShape.GetOffset(current)]);
                             } while (incr.Next() != null);
 
                             return ret;
@@ -290,11 +290,11 @@ namespace NumSharp.Backends
 	                    case NPTypeCode.Int64:
 	                    {
 		                    var ret_address = (long*)ret.Address;
-                            var incr = new NDCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
+                            var incr = new ValueCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
                             int[] current = incr.Index;
                             do
                             {
-                                *(ret_address + retShape.GetOffset(current)) = Converts.ToInt64(*(lhs_address + BroadcastedLeftShape.GetOffset(current)) #(op) (__2__) *(rhs_address + BroadcastedRightShape.GetOffset(current)));
+                                ret_address[retShape.GetOffset(current)] = Converts.ToInt64(lhs_address[BroadcastedLeftShape.GetOffset(current)] #(op) (__2__) rhs_address[BroadcastedRightShape.GetOffset(current)]);
                             } while (incr.Next() != null);
 
                             return ret;
@@ -302,11 +302,11 @@ namespace NumSharp.Backends
 	                    case NPTypeCode.UInt64:
 	                    {
 		                    var ret_address = (ulong*)ret.Address;
-                            var incr = new NDCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
+                            var incr = new ValueCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
                             int[] current = incr.Index;
                             do
                             {
-                                *(ret_address + retShape.GetOffset(current)) = Converts.ToUInt64(*(lhs_address + BroadcastedLeftShape.GetOffset(current)) #(op) (__2__) *(rhs_address + BroadcastedRightShape.GetOffset(current)));
+                                ret_address[retShape.GetOffset(current)] = Converts.ToUInt64(lhs_address[BroadcastedLeftShape.GetOffset(current)] #(op) (__2__) rhs_address[BroadcastedRightShape.GetOffset(current)]);
                             } while (incr.Next() != null);
 
                             return ret;
@@ -314,11 +314,11 @@ namespace NumSharp.Backends
 	                    case NPTypeCode.Char:
 	                    {
 		                    var ret_address = (char*)ret.Address;
-                            var incr = new NDCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
+                            var incr = new ValueCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
                             int[] current = incr.Index;
                             do
                             {
-                                *(ret_address + retShape.GetOffset(current)) = Converts.ToChar(*(lhs_address + BroadcastedLeftShape.GetOffset(current)) #(op) (__2__) *(rhs_address + BroadcastedRightShape.GetOffset(current)));
+                                ret_address[retShape.GetOffset(current)] = Converts.ToChar(lhs_address[BroadcastedLeftShape.GetOffset(current)] #(op) (__2__) rhs_address[BroadcastedRightShape.GetOffset(current)]);
                             } while (incr.Next() != null);
 
                             return ret;
@@ -326,11 +326,11 @@ namespace NumSharp.Backends
 	                    case NPTypeCode.Double:
 	                    {
 		                    var ret_address = (double*)ret.Address;
-                            var incr = new NDCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
+                            var incr = new ValueCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
                             int[] current = incr.Index;
                             do
                             {
-                                *(ret_address + retShape.GetOffset(current)) = Converts.ToDouble(*(lhs_address + BroadcastedLeftShape.GetOffset(current)) #(op) (__2__) *(rhs_address + BroadcastedRightShape.GetOffset(current)));
+                                ret_address[retShape.GetOffset(current)] = Converts.ToDouble(lhs_address[BroadcastedLeftShape.GetOffset(current)] #(op) (__2__) rhs_address[BroadcastedRightShape.GetOffset(current)]);
                             } while (incr.Next() != null);
 
                             return ret;
@@ -338,11 +338,11 @@ namespace NumSharp.Backends
 	                    case NPTypeCode.Single:
 	                    {
 		                    var ret_address = (float*)ret.Address;
-                            var incr = new NDCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
+                            var incr = new ValueCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
                             int[] current = incr.Index;
                             do
                             {
-                                *(ret_address + retShape.GetOffset(current)) = Converts.ToSingle(*(lhs_address + BroadcastedLeftShape.GetOffset(current)) #(op) (__2__) *(rhs_address + BroadcastedRightShape.GetOffset(current)));
+                                ret_address[retShape.GetOffset(current)] = Converts.ToSingle(lhs_address[BroadcastedLeftShape.GetOffset(current)] #(op) (__2__) rhs_address[BroadcastedRightShape.GetOffset(current)]);
                             } while (incr.Next() != null);
 
                             return ret;
@@ -350,11 +350,11 @@ namespace NumSharp.Backends
 	                    case NPTypeCode.Decimal:
 	                    {
 		                    var ret_address = (decimal*)ret.Address;
-                            var incr = new NDCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
+                            var incr = new ValueCoordinatesIncrementor(BroadcastedLeftShape.dimensions); //doesn't matter which side it is.
                             int[] current = incr.Index;
                             do
                             {
-                                *(ret_address + retShape.GetOffset(current)) = Converts.ToDecimal(*(lhs_address + BroadcastedLeftShape.GetOffset(current)) #(op) (__2__) *(rhs_address + BroadcastedRightShape.GetOffset(current)));
+                                ret_address[retShape.GetOffset(current)] = Converts.ToDecimal(lhs_address[BroadcastedLeftShape.GetOffset(current)] #(op) (__2__) rhs_address[BroadcastedRightShape.GetOffset(current)]);
                             } while (incr.Next() != null);
 
                             return ret;
